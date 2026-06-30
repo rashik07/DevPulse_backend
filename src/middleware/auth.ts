@@ -20,7 +20,7 @@ const auth = (...roles: ROLES[]) => {
 
       const token = req.headers.authorization;
 
-      // console.log(token);
+      console.log(token);
       if (!token) {
         res.status(401).json({
           success: false,
@@ -52,12 +52,7 @@ const auth = (...roles: ROLES[]) => {
         });
       }
 
-      if (!user?.is_active) {
-        res.status(403).json({
-          success: false,
-          message: "Forbidden!!",
-        });
-      }
+
 
       // console.log("Auth Role :", user.role);
 
