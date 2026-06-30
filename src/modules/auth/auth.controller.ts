@@ -13,7 +13,7 @@ const createUser = async (req: Request, res: Response) => {
     sendResponse(res, {
       statusCode: 201,
       success: true,
-      message: "User Created successfully!",
+      message: "User registered successfully",
       data: result.rows[0],
     });
   } catch (error: any) {
@@ -22,10 +22,8 @@ const createUser = async (req: Request, res: Response) => {
       success: false,
       message: error.message,
       errors: error,
-      
     });
   }
-
 };
 
 //login
@@ -37,22 +35,19 @@ const loginUser = async (req: Request, res: Response) => {
 
     console.log(result);
     sendResponse(res, {
-        statusCode: 200,
-        success: true,
-        message: "User logged in successfully!",
-        data: result,
-      });
+      statusCode: 200,
+      success: true,
+      message: "Login successful",
+      data: result,
+    });
   } catch (error: any) {
     sendResponse(res, {
       statusCode: 500,
-        success: false,
-        message: error.message,
-        errors: error,
+      success: false,
+      message: error.message,
+      errors: error,
     });
   }
-  
-
-
 };
 
 export const authController = {
