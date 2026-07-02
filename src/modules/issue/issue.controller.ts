@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import { issueService } from "./issue.service";
+import sendResponse from "../../utility/sendResponse";
 
 const createIssue = async (req: Request, res: Response) => {
   try {
@@ -12,12 +13,12 @@ const createIssue = async (req: Request, res: Response) => {
       message: "Issue created successfully",
       data: result,
     });
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
+  } catch (error: any) {
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
-      message: "Something went wrong",
+      message: error.message,
+      errors: error,
     });
   }
 };
@@ -31,12 +32,12 @@ const getAllIssues = async (req: Request, res: Response) => {
       message: "Issues retrieved successfully",
       data: result,
     });
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
+  } catch (error: any) {
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
-      message: "Something went wrong",
+      message: error.message,
+      errors: error,
     });
   }
 };
@@ -59,12 +60,12 @@ const getSingleIssue = async (req: Request, res: Response) => {
       message: "Issue retrieved successfully",
       data: result,
     });
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
+  } catch (error: any) {
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
-      message: "Something went wrong",
+      message: error.message,
+      errors: error,
     });
   }
 };
@@ -83,11 +84,11 @@ const updateIssue = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error: any) {
-    console.error(error);
-
-    res.status(error.statusCode || 500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
-      message: error.message || "Something went wrong",
+      message: error.message,
+      errors: error,
     });
   }
 };
@@ -103,11 +104,11 @@ const deleteIssue = async (req: Request, res: Response) => {
       message: "Issue deleted successfully",
     });
   } catch (error: any) {
-    console.error(error);
-
-    res.status(error.statusCode || 500).json({
+    sendResponse(res, {
+      statusCode: 500,
       success: false,
-      message: error.message || "Something went wrong",
+      message: error.message,
+      errors: error,
     });
   }
 };

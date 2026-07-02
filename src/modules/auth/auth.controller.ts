@@ -30,10 +30,10 @@ const createUser = async (req: Request, res: Response) => {
 const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password);
+    // console.log(email, password);
     const result = await authService.loginUser(email, password);
 
-    console.log(result);
+    // console.log(result);
     sendResponse(res, {
       statusCode: 200,
       success: true,
