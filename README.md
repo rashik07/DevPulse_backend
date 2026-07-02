@@ -1,6 +1,6 @@
 # DevPulse Backend (Issue Tracking System)
 
-**Live URL:** [Insert Live URL Here] *(Update with your deployed link)*
+**Live URL:** https://dev-pulse-backend-three.vercel.app/
 
 ## Features
 
